@@ -1,0 +1,49 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="card">
+        <h1>Menentukan Teks Palindrome</h1>
+        <input id="text" type="text" placeholder="Teks" />
+        <button class="button-30" onclick="determinePalindrome()">
+          Tentukan Palindrome
+        </button>
+        <p id="answer"></p>
+      </div>
+    </div>
+
+    <script>
+      function determinePalindrome() {
+        let text = document.getElementById("text").value;
+        let valid = true;
+        if (typeof text != "string") {
+          valid = false;
+        }
+
+        if (valid) {
+          let answer = checkPalindrome(text);
+          document.getElementById("answer").innerHTML = answer;
+        } else {
+          alert("karakter tidak valid");
+        }
+      }
+
+      function checkPalindrome(text) {
+        const len = text.length;
+
+        for (let i = 0; i < len / 2; i++) {
+          if (text[i] !== text[len - 1 - i]) {
+            return "Kata" + " '" + text + "' " + "bukan merupakan palindrome";
+          }
+        }
+        return "Kata" + " '" + text + "' " + "merupakan palindrome";
+      }
+    </script>
+  </body>
+</html>

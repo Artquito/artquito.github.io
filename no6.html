@@ -1,0 +1,64 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      pre {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="card">
+        <h1>Segitiga Pascal</h1>
+        <input id="numRows" style="width: 400px" type="number" placeholder="Jumlah Baris"/>
+        <button class="button-30" onclick="printTriangle()">
+          Buat Segitiga
+        </button>
+        <div id="answer"></div>
+        <!-- <pre>1</pre>
+        <pre>1   2   1</pre>
+        <pre>1   3  3  1</pre> -->
+      </div>
+    </div>
+
+    <script>
+      function addRow(triangle) {
+        let previous = triangle[triangle.length - 1];
+        let newRow = [1];
+        for (let i = 0; i < previous.length - 1; i++) {
+          let current = previous[i];
+          let next = previous[i + 1];
+          newRow.push(current + next);
+        }
+        newRow.push(1);
+        return triangle.push(newRow);
+      }
+
+      function generate(numRows) {
+        let triangle = [[1], [1, 1]];
+        for (let i = 2; i < numRows; i++) {
+          addRow(triangle);
+        }
+        return triangle;
+      }
+
+      function printTriangle() {
+        document.getElementById("answer").innerHTML = ""
+        let numRows = document.getElementById("numRows").value;
+        triangle = generate(numRows);
+        answer = document.getElementById("answer");
+        for (let j = 0; j < triangle.length; j++) {
+          pre = document.createElement("pre");
+          pre.innerText = triangle[j];
+          pre.innerText = pre.innerText.replace(/[,]/g, "    ");
+          answer.appendChild(pre);
+        }
+      }
+    </script>
+  </body>
+</html>

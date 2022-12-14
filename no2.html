@@ -1,0 +1,42 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="card">
+        <h1>Menghitung Faktorial Secara Rekursif</h1>
+        <input id="fact" type="number" placeholder="Angka" />
+        <button class="button-30" onclick="calculateSeconds()">
+          Hitung Faktorial
+        </button>
+        <p id="answer"></p>
+      </div>
+    </div>
+    <script>
+      function multiply(n) {
+        if (n >= 1) return n * multiply(n - 1);
+        else return 1;
+      }
+      function calculateSeconds() {
+        let fact = document.getElementById("fact").value;
+        let valid = true;
+        if (fact < 0) {
+          valid = false;
+        }
+
+        if (valid) {
+          let answer = multiply(fact);
+          document.getElementById("answer").innerHTML =
+            "!" + fact + " adalah " + answer;
+        } else {
+          alert("input tidak boleh kurang dari 0");
+        }
+      }
+    </script>
+  </body>
+</html>

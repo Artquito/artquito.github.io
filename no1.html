@@ -1,43 +1,43 @@
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <style>
-
-    </style>
-</head>
-<body>
-    <h1>Menghitung Detik</h1>
-    <div style="margin-bottom:20px">
-        <input id="hours" type="number" placeholder="jumlah jam">
-        <input id="minutes" type="number" placeholder="jumlah menit">
-        <input id="seconds" type="number" placeholder="jumlah detik">
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Menghitung Detik</h1>
+      <div class="card">
+        <input id="hours" type="number" placeholder="Jumlah Jam" />
+        <input id="minutes" type="number" placeholder="Jumlah Menit" />
+        <input id="seconds" type="number" placeholder="Jumlah Detik" />
+        <button class="button-30" onclick="calculateSeconds()">Hitung jumlah detik</button>
+        <p id="answer"></p>
+      </div>
     </div>
-    <button onclick="calculateSeconds()">Hitung jumlah detik</button>
-    <p id="answer"></p>
     <script>
-        function calculateSeconds(){
-            let hours = document.getElementById("hours").value
-            let minutes = document.getElementById("minutes").value
-            let sec = document.getElementById("seconds").value
-            let valid = true
+      function calculateSeconds() {
+        let hours = document.getElementById("hours").value;
+        let minutes = document.getElementById("minutes").value;
+        let sec = document.getElementById("seconds").value;
+        let valid = true;
 
-            if(minutes > 60 || seconds > 60){
-                valid = false
-            }
-
-            if(valid){
-                let answer = 3600 * parseInt(hours)
-                answer = answer + 60 * parseInt(minutes)
-                answer = answer + parseInt(sec)
-                document.getElementById("answer").innerHTML = "Jumlah Detik : " + answer
-            }
-            else{
-                alert("menit dan detik tidak boleh lebih dari 60")
-            }
+        if (minutes > 60 || seconds > 60) {
+          valid = false;
         }
+
+        if (valid) {
+          let answer = 3600 * parseInt(hours);
+          answer = answer + 60 * parseInt(minutes);
+          answer = answer + parseInt(sec);
+          document.getElementById("answer").innerHTML =
+            "Jumlah Detik : " + answer;
+        } else {
+          alert("menit dan detik tidak boleh lebih dari 60");
+        }
+      }
     </script>
-</body>
+  </body>
 </html>

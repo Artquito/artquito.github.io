@@ -1,0 +1,81 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="card">
+        <h1>Menghitung Jumlah Munculnya Teks</h1>
+        <textarea style="width: 400px" id="text" cols="30" rows="10" placeholder="Teks"></textarea>
+        <button
+          style="width: 200px"
+          class="button-30"
+          onclick="identifyChar(countChar)"
+        >
+          Hitung Teks
+        </button>
+
+        <table style="width: 400px">
+          <thead>
+            <th>Huruf</th>
+            <th>Jumlah</th>
+          </thead>
+          <tbody id="answer"></tbody>
+        </table>
+        <h3 id="total"></h3>
+      </div>
+    </div>
+
+    <script>
+      function printans(ans) {
+        let insertPoint = document.getElementById("answer");
+        let total = document.getElementById("total");
+        let totalCount = 0;
+        for (let [key, value] of ans) {
+          totalCount += value;
+          let row = document.createElement("tr");
+          let cell1 = document.createElement("td");
+          let cell2 = document.createElement("td");
+          cell1.innerText = key;
+          cell2.innerText = value;
+          row.appendChild(cell1);
+          row.appendChild(cell2);
+          insertPoint.appendChild(row);
+          total.innerText = `Jumlah huruf yang terpakai: ${totalCount}`;
+        }
+      }
+
+      function countChar(str, outp_map) {
+        for (let i = 0; i < str.length; i++) {
+          let k = outp_map.get(str[i]);
+          outp_map.set(str[i], k + 1);
+        }
+        printans(outp_map);
+      }
+
+      function identifyChar(callback) {
+        let insertPoint = document.getElementById("answer");
+        insertPoint.innerHTML = "";
+        let text = document.getElementById("text").value;
+        text = text.replace(/\s/g, '');
+        if (text.length === 0) {
+          alert(" tidak boleh kosong ");
+          return;
+        } else {
+          let ans = new Map();
+          for (let i = 0; i < text.length; i++) {
+              ans.set(text[i], 0);
+          }
+          let sortedAns = [...ans.entries()];
+          sortedAns.sort();
+          sortedAns = new Map(sortedAns);
+          callback(text, sortedAns);
+        }
+      }
+    </script>
+  </body>
+</html>

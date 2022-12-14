@@ -1,0 +1,49 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="card">
+        <h1>Menentukan Tahun Kabisat</h1>
+          <input
+            id="year"
+            type="number"
+            min="1900"
+            step="1"
+            placeholder="Tahun"
+          />
+        <button class="button-30" onclick="determineLeapYear()">Tentukan Kabisat</button>
+        <p id="answer"></p>
+      </div>
+    </div>
+
+    <script>
+      function determineLeapYear() {
+        let year = document.getElementById("year").value;
+        let valid = true;
+        if (year < 1900) {
+          valid = false;
+        }
+
+        if (valid) {
+          let answer = checkLeapYear(year);
+          document.getElementById("answer").innerHTML = answer;
+        } else {
+          alert("input tidak boleh kurang dari 0");
+        }
+      }
+      function checkLeapYear(year) {
+        if ((0 == year % 4 && 0 != year % 100) || 0 == year % 400) {
+          return year + " adalah tahun kabisat";
+        } else {
+          return year + " bukan tahun kabisat";
+        }
+      }
+    </script>
+  </body>
+</html>

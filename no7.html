@@ -1,0 +1,33 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="card">
+        <h1>Menghilangkan Tanda Baca</h1>
+        <textarea
+          id="text"
+          style="width: 400px"
+          rows="4"
+          cols="50"
+          placeholder="Kalimat"
+        ></textarea>
+        <button id="btn" class="button-30">Hilangkan Tanda Baca</button>
+        <h3 id="answer" style="word-wrap: break-word; width: inherit"></h3>
+      </div>
+    </div>
+
+    <script>
+      document.getElementById("btn").addEventListener("click", function () {
+        let text = document.getElementById("text").value;
+        var newString = text.replace(/[^A-Z0-9]+/gi, "");
+        document.getElementById("answer").innerText = newString;
+      });
+    </script>
+  </body>
+</html>
