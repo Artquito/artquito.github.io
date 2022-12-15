@@ -11,7 +11,7 @@
       <div class="card">
         <h1>Menghitung Faktorial Secara Rekursif</h1>
         <input id="fact" type="number" placeholder="Angka" />
-        <button class="button-30" onclick="calculateSeconds()">
+        <button class="button-30" onclick="calculateFactorial()">
           Hitung Faktorial
         </button>
         <p id="answer"></p>
@@ -22,7 +22,7 @@
         if (n >= 1) return n * multiply(n - 1);
         else return 1;
       }
-      function calculateSeconds() {
+      function calculateFactorial() {
         let fact = document.getElementById("fact").value;
         let valid = true;
         if (fact < 0) {
